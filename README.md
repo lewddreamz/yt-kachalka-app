@@ -1,4 +1,4 @@
-#YT-KACHALKA Application
+# YT-KACHALKA Application
 Отдельный репозиторий для сборки приложения yt-kachalka (front+backend)
 
 ### Порядок установки
