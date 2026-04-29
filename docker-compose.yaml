@@ -4,14 +4,11 @@ services:
   # --- Фронтенд (Vite + TypeScript) ---
   frontend:
     build:
-      context: ./yt-kachalka-frontend
-      dockerfile: Dockerfile
+      context: ./yt-kachalka-frontend/
+      dockerfile: ./Dockerfile
     container_name: yt-kachalka-frontend
     ports:
       - "8080:8080" # Порт для доступа к Vite Dev Server из браузера
-    volumes:
-      - ./yt-kachalka-frontend:/app
-      - /app/node_modules 
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true # Для корректной работы hot-reload на некоторых ОС (например, Windows/Mac)
@@ -22,11 +19,9 @@ services:
   # --- Бэкенд API (PHP-FPM + Nginx для HTTP доступа) ---
   api:
     build:
-      context: ./yt-kachalka-api/docker/api/
-      dockerfile: Dockerfile
+      context: ./yt-kachalka-api/
+      dockerfile: ./docker/api/Dockerfile
     container_name: yt-kachalka-api
-    volumes:
-      - ./yt-kachalka-api:/var/www/html # Монтируем исходный код для hot-reload PHP
     networks:
       - app-network
 
